@@ -1,0 +1,87 @@
+Haproxy Tool:
+=============
+
+Haproxy tool has the Following Components.
+
+1) Tools Required for running Haproxy Generator
+2) Haproxy Generator config file
+3) HaPassword Registry
+4) Haproxy Generator script.
+
+
+Tools Required for running Haproxy Generator:
+---------------------------------------------
+
+The Following Tools Have to be installed for Running the Script.
+
+1) Python Version 3
+2) Pip packages have to installed.
+3) The following pip features have to be installed.
+    requests - For the API Query
+    smtplib  - For the Email Generation
+    netmiko  - For the Ssh Module.
+    keyring  - For the Password Registry Tool
+
+
+                Haproxy Generator config file:
+                --------------------------------
+
+                The haproxy Generator configs are used for the Input of the haproxy script which used for the API Query and Email generation.
+                Also the tool informations haproxy config path are to be entered.
+
+                Demo Example config:
+                -----------------------
+
+                [VERSA_DIRECTOR]
+                director_count:2
+
+                [VERSA-DIR-1]
+                username: Administrator
+                management_address: 10.1.1.3
+
+
+                [VERSA-DIR-2]
+                username: Administrator
+                management_address: 10.1.1.4
+
+                [EMAIL-DETAILS]
+                sender = ramkiversa@gmail.com
+                receiver = ramakrishnans@versa-networks.com
+                user = ramkiversa@gmail.com
+                port = 587
+                smtp_server= smtp.gmail.com
+
+                [PROXY-SERVER]
+                sudopassword= sudouser
+                haproxy_config = /etc/haproxy/haproxy.cfg
+
+
+
+
+                HaPassword Registry:
+                ------------------------
+
+                Hapassword Registry file is used to store the passwords used in the script. This would be onetime execution during the tool installation.
+
+
+                Haproxy Generator script.:
+                -------------------------------
+                Haproxy generator script can be executed manually or periodic execution with the cronjobs.
+
+                1)  This tool can be used in the cronjob to monitor the status of the Rest API. Which Automatically Updates Ha Proxy tool on the Master & Slave Relationship.
+                2)  In case of the Split-Brain Scenario it prefers the Designated master.
+                3)  In case of the Master is not Reachable and only the Slave is reachable through the Proxy too, it sends the debug information as email to the Administrator.
+                4)  In case of the Both Directors are not reachable it sends the Email to the Administrator.
+                
+                Sample Email:
+
+                Hi
+                
+                Both the Versa Directors are not Reachable 10.1.1.3 and 10.1.1.4  Automated Email from Haproxy Tool 
+
+                  Thanks & Regards
+                   VersaHaProxy
+
+                5)  In case of One of the Director it is not reachable it sends the Email to the Administrator
+
+
