@@ -1,5 +1,5 @@
-Haproxy Tool:
-=============
+VersHaproxy Tool:
+==================
 
 Haproxy tool has the Following Components.
 
@@ -8,6 +8,28 @@ Haproxy tool has the Following Components.
 3) HaPassword Registry
 4) Haproxy Generator script.
 
+General Queries:
+------------------
+1) Verify the DNS resolving to public domain and Internet is working.
+
+If the DNS is resolving via IPv6 path Please enable the following configs on the Ubuntu.
+
+$ sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+$ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+
+2) Verify the python-pip and python3-pip is installed
+
+ sudo apt-get install python-pip
+ sudo apt-get install python3-pip
+
+3) Other packages required for the HaProxy is.
+
+Haproxy package  & Apache2 package
+
+ sudo apt-get install apache2
+ sudo apt-get install haproxy
+
+
 
 Tools Required for running Haproxy Generator:
 ---------------------------------------------
@@ -15,22 +37,30 @@ Tools Required for running Haproxy Generator:
 The Following Tools Have to be installed for Running the Script.
 
 1) Python Version 3
+ Example: sudo apt-get install python3
 2) Pip packages have to installed.
+Example: sudo apt-get install pip
 3) The following pip features have to be installed.
     requests - For the API Query
     smtplib  - For the Email Generation
     netmiko  - For the Ssh Module.
     keyring  - For the Password Registry Tool
+    haproxy  - For the Haproxy configurations.
+    apache2  - For the http proxy configurations.
 
+Example: pip install requests
+         pip3 install netmiko
+4) To install the Haproxy Module
+ sudo apt-get install haproxy
+ 
+Haproxy Generator config file:
+--------------------------------
 
-                Haproxy Generator config file:
-                --------------------------------
+The haproxy Generator configs are used for the Input of the haproxy script which used for the API Query and Email generatio
+Also the tool informations haproxy config path are to be entered.
 
-                The haproxy Generator configs are used for the Input of the haproxy script which used for the API Query and Email generation.
-                Also the tool informations haproxy config path are to be entered.
-
-                Demo Example config:
-                -----------------------
+ Demo Example config:
+ -----------------------
 
                 [VERSA_DIRECTOR]
                 director_count:2
@@ -58,26 +88,29 @@ The Following Tools Have to be installed for Running the Script.
 
 
 
-                HaPassword Registry:
-                ------------------------
+Intial_setup Registry:
+------------------------
 
-                Hapassword Registry file is used to store the passwords used in the script. This would be onetime execution during the tool installation.
+      Intial_setup  Hapassword Registry file is used to store the passwords used in the script. This would be onetime execution during the tool installation.
 
 
-                Haproxy Generator script.:
-                -------------------------------
+Haproxy Generator script.:
+-------------------------------
+
                 Haproxy generator script can be executed manually or periodic execution with the cronjobs.
 
-                1)  This tool can be used in the cronjob to monitor the status of the Rest API. Which Automatically Updates Ha Proxy tool on the Master & Slave Relationship.
+                1)  This tool can be used in the cronjob to monitor the status of the Rest API. Which Automatically Updates Ha Proxy tool on the
+Master & Slave Relationship.
                 2)  In case of the Split-Brain Scenario it prefers the Designated master.
-                3)  In case of the Master is not Reachable and only the Slave is reachable through the Proxy too, it sends the debug information as email to the Administrator.
+                3)  In case of the Master is not Reachable and only the Slave is reachable through the Proxy too, it sends the debug information
+as email to the Administrator.
                 4)  In case of the Both Directors are not reachable it sends the Email to the Administrator.
-                
+
                 Sample Email:
 
                 Hi
-                
-                Both the Versa Directors are not Reachable 10.1.1.3 and 10.1.1.4  Automated Email from Haproxy Tool 
+
+                Both the Versa Directors are not Reachable 10.1.1.3 and 10.1.1.4  Automated Email from Haproxy Tool
 
                   Thanks & Regards
                    VersaHaProxy
@@ -85,3 +118,7 @@ The Following Tools Have to be installed for Running the Script.
                 5)  In case of One of the Director it is not reachable it sends the Email to the Administrator
 
 
+ start.sh:
+ --------
+
+ Edit the start.sh with the path where the tool is present and link the start.sh contrab tool.
