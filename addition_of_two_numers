@@ -1,0 +1,13 @@
+
+
+nums = [ 1,2,3,4,5,6,7,8,9]
+target = 5
+hashmap = {}
+for i in range(len(nums)) :
+   #print (i)
+   #print (hashmap)
+   if (target - nums[i]) in hashmap: 
+        #print (i)
+        print( [hashmap[target - nums[i]],i])
+   else :
+        hashmap[nums[i]] = i
