@@ -1,3 +1,4 @@
+# the Below format is using the hashmaps
 
 
 nums = [ 1,2,3,4,5,6,7,8,9]
@@ -11,3 +12,19 @@ for i in range(len(nums)) :
         print( [hashmap[target - nums[i]],i])
    else :
         hashmap[nums[i]] = i
+        
+        
+        
+        
+# by using this method  index calculation is done two times hence the code run time its more 1 second.
+# we need to optimize this code.
+
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range (0, len(nums)):
+            if target-nums[i] in nums:
+                value = nums.index(target-nums[i])
+                if ( value != i):
+                    return (i,value)
+                
