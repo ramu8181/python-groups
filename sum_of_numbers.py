@@ -1,6 +1,11 @@
-#sum of the numbers in the list
+#sum of the numbers in the list, this is iterative method and uses the 
 
-
+if __name__=='__main__':
+    N = int(input("Enter the Integer"))
+    j = 0 
+    for i in range (0,N):
+        j = j+ i
+    print (j)
 
 
 
