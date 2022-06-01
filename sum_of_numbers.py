@@ -12,7 +12,9 @@ if __name__=='__main__':
 
 
 
-# sum of the num
+# sum of the num, using recursion method there are variables used, but the functional happens n times with addition operation.
+#need to understand more on the evaluation of the variable usage and functional which is cpu intensive.
+
 
 
 def findsum (n=1):
