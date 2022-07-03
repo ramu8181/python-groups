@@ -8,9 +8,22 @@ class Solution:
             else:
                 return ("no")
         return ("yes")
+    
+    def isPalindrome1(s):
+        return s == s[::-1]
+ 
+ 
+
 
 
 if __name__=='__main__':
     x= -121
     p = Solution()
     print (p.isPalindrome(x))
+    # Driver code
+    s = "malayalam"
+    ans = isPalindrome1(s)
+    if ans:
+      print("Yes")
+    else:
+      print("No")
